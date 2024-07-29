@@ -1,0 +1,13 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+          "name": "ROS: spawn_tx60",
+          "request": "launch",
+          "target": "/home/hq/code/staubli_experimental/staubli_tx60_gazebo/launch/spawn_tx60.launch.xml",
+          "launch": ["rviz", "gz", "gzserver", "gzclient"],
+          "type": "ros"
+      }
+    ]
+}  

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="model"
+        default="$(find-pkg-share staubli_tx60_support)/urdf/tx60.xacro" />
+    <arg name="start_gazebo" default="true" />
+    <arg name="start_rviz" default="true" />
+
+    <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py">
+        <!--arg
+        name="paused" value="true"/>
+      <arg name="use_sim_time" value="true"/>
+      <arg name="gui" value="true"/>
+      <arg name="recording" value="false"/>
+      <arg name="debug" value="false"/>
+      <arg name="verbose" value="true"/-->
+    </include>
+
+    <!-- <arg name="robot_description" default="cat '$(find staubli_tx60_gazebo)/urdf/m2wr.urdf'" /> -->
+    <node name="spawn_gazebo_model" pkg="gazebo_ros" exec="spawn_entity.py" output="screen"
+        args="-file $(var model) -entity my_robot" />
+
+</launch>

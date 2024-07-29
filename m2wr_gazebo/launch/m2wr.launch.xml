@@ -1,0 +1,20 @@
+<launch>
+    <!-- args that can be set from the command line or a default will be used -->
+    <arg name="background_r" default="0" />
+    <arg name="background_g" default="255" />
+    <arg name="background_b" default="0" />
+    <arg name="chatter_py_ns" default="chatter/py/ns" />
+    <arg name="chatter_xml_ns" default="chatter/xml/ns" />
+    <arg name="chatter_yaml_ns" default="chatter/yaml/ns" />
+
+    <set_env name="TURTLEBOT3_MODEL" value="waffle" />
+    <!-- start a turtlesim_node in the turtlesim1 namespace -->
+    <node pkg="turtlesim" exec="turtlesim_node" name="sim" namespace="turtlesim1" />
+    <!-- start another turtlesim_node in the turtlesim2 namespace
+        and use args to set parameters -->
+    <node pkg="turtlesim" exec="turtlesim_node" name="sim" namespace="turtlesim2">
+        <param name="background_r" value="$(var background_r)" />
+        <param name="background_g" value="$(var background_g)" />
+        <param name="background_b" value="$(var background_b)" />
+    </node>
+</launch>
